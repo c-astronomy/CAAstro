@@ -1,0 +1,141 @@
+https://christian-photo.github.io/github-page/projects/ninaAPI/v2/doc/api#tag/camera/GET/equipment/camera/info
+
+
+
+
+Capture / Platesolve​Copy link
+
+Auth Required
+
+Copy as Markdown
+This endpoint captures and/or returns an image. Can optionally solve the image.
+
+Query Parameters
+solve
+Type:boolean
+Copy link to solve
+Whether to solve the image.
+
+duration
+Type:number
+Format:double
+Copy link to duration
+The duration of the exposure. If omitted the exposure time for plate solving will be used.
+
+gain
+Type:number
+Format:int32
+Copy link to gain
+The gain to use for the exposure. If omitted, the camera's default gain will be used.
+
+getResult
+Type:boolean
+Copy link to getResult
+Whether to get the result.
+
+resize
+Type:boolean
+Copy link to resize
+Whether to resize the image.
+
+quality
+Type:number
+Format:int32
+Copy link to quality
+The quality of the image, ranging from 1 (worst) to 100 (best). -1 or omitted for png
+
+size
+Type:string
+Copy link to size
+The size of the image ([width]x[height]). Requires resize to be true.
+
+scale
+Type:number
+Format:double
+Copy link to scale
+The scale of the image. Requires resize to be true.
+
+stream
+Type:boolean
+Copy link to stream
+Stream the image to the client. This will only stream the image in image/jpg or image/png format. The platesolve result is not included.
+
+omitImage
+Type:boolean
+Copy link to omitImage
+Omit the image from the response. This will only send the platesolve result, if the image was platesolved. Use it if you do not care about the image, only about the platesolve result.
+
+waitForResult
+Type:boolean
+Copy link to waitForResult
+Wait for the capture to finish and then return the result. This will immediately take into account all the settings you would otherwise use together with getResult, like resize and stream.
+
+targetName
+Type:string
+Copy link to targetName
+The name of the target that is being captured. Useful for livestacking as an example.
+
+save
+Type:boolean
+Copy link to save
+Save the image to the disk. This needs to be set, when capturing the image.
+
+onlyAwaitCaptureCompletion
+Type:boolean
+Copy link to onlyAwaitCaptureCompletion
+Use this if you want to capture images at a high rate, the endpoint will return immediately once the camera is ready to take a picture again. The image preparation, platesolve and save will continue to run in the background, so the image wont be available until these have completed as well.
+
+onlySaveRaw
+Type:boolean
+Copy link to onlySaveRaw
+Use if you do not need the other capture endpoints, but want to save the raw image. Useful for high frequency captures.
+
+skipAutoStretch
+Type:boolean
+Copy link to skipAutoStretch
+Use if you do not want the autostretch in the preview window. Useful for high frequency captures.
+
+imageType
+Type:string
+enum
+Default
+Copy link to imageType
+The image type (light, dark, bias, flat, snapshot)
+
+values
+LIGHT
+DARK
+BIAS
+FLAT
+SNAPSHOT
+Responses
+
+200
+Successful response
+Selected Content Type:
+application/json
+
+409
+Camera not connected / Camera currently exposing
+application/json
+
+500
+Internal server error, Unknown error
+application/json
+Request Example forget/equipment/camera/capture
+Shell Curl
+curl 'http://localhost:1888/v2/api/equipment/camera/capture?imageType=SNAPSHOT' \
+  --header 'Authorization: Basic username:password'
+
+Status:200Successful response
+Status:409Camera not connected / Camera currently exposing
+Status:500Internal server error, Unknown error
+{
+  "Response": "Capture already in progress",
+  "Error": "",
+  "StatusCode": 200,
+  "Success": true,
+  "Type": "API"
+}
+
+Successful response

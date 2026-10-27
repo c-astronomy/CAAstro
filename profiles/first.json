@@ -1,0 +1,1 @@
+{"name": "first", "steps": [{"type": "track on", "params": {}, "active": true}, {"type": "goto", "params": {"ra": 0.0, "dec": 0.0}, "active": true}, {"type": "platesolve", "params": {}, "active": true}, {"type": "focus", "params": {"step": 1}, "active": true}, {"type": "capture", "params": {"exposure": 60.0}, "active": true}]}

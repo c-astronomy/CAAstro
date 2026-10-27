@@ -1,0 +1,13 @@
+# AstroControl — Cross-Platform Astrophotography Control
+# Minimal, clean, fully functional Alpaca/INDI/ASCOM driver control.
+# Python 3.11+, Windows / Linux / macOS
+
+python-dateutil>=2.8
+PySide6>=6.5
+numpy>=1.24
+Pillow>=10.0
+astropy>=5.3
+ephem>=4.1
+alpaca-py>=1.0
+requests>=2.31
+pyfits>=1.0  # if using astropy.io.fits
